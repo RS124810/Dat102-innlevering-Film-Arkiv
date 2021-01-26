@@ -134,10 +134,11 @@ public class Meny {
 							// todo
 						} else if (svar2 == 2) {
 							// valg: slette film i eksisterende arkiv
-							boolean s = false;
+							
 							int filmnr = Integer.parseInt(showInputDialog(null,
 									"Skriv inn film nummeret til filmen som skal slettes fra arkivet"));
-							//s = arkivEdit.slettFilm(filmnr);
+							
+							// kontroll ble film ble slettet?
 							if (arkivEdit.slettFilm(filmnr)) {
 								// lagrer arkivet til fil "filnavn"
 								showMessageDialog(null, "Film nr: " + filmnr + " ble slettet, oppdaterer filen");
