@@ -58,7 +58,7 @@ public class Fil {
 				utfil.println();
 
 			}
-			showMessageDialog(null, "Filen " + FIL + " ble laget/oppdatert"); // bekreftelse på at fil ble lagret
+			showMessageDialog(null, "Filen " + FIL + " lagret"); // bekreftelse på at fil ble lagret
 			utfil.close();
 			skriver.close();
 

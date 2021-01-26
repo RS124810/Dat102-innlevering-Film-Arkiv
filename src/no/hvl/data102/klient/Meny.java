@@ -40,8 +40,8 @@ public class Meny {
 			if (svar == 0) {
 				String Arkivnavn = showInputDialog("Skriv inn navn til det nye arkivet"); // Filnavn
 				int antall = Integer.parseInt(showInputDialog("Hvor mange filmer skal du legge til i arkivet?"));
-
-				Filmarkiv arkiv = new Filmarkiv(antall);
+				
+				FilmarkivADT arkiv = new Filmarkiv (antall);
 				Tekstgrensesnitt film = new Tekstgrensesnitt();
 
 				for (int i = 0; i < antall; i++) {
@@ -68,6 +68,7 @@ public class Meny {
 				String[] valg2 = { "Søk", "Legg til en film", "Slett en film" };
 				String[] søkvalg = { "Søk etter filmer av produsent", "Søk etter filmer med tittel", "Tilbake" };
 				int meny2 = 0;
+				
 				while (meny2 == 0) {
 
 					// laster inn arkiv som skal jobbes med fra fil gitt ved parameteren filnavn,
@@ -83,10 +84,15 @@ public class Meny {
 							JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, ikon, valg1, 0);
 
 					if (svar1 == 0) { // viser filmer i arkivet på skjerm
-
+						
+						//arkivet er tomt
+						if (Fil.antall(filnavn)==0) {
+							lestinn.tom();
+						}else {
 						for (int i = 0; i < arkivE.length; i++) {
 							ARKIVEDIT = arkivE[i];
 							lestinn.visFilm(ARKIVEDIT);
+						}
 						}
 
 					} else if (svar1 == 1) {

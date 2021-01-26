@@ -71,6 +71,10 @@ public class Tekstgrensesnitt {
 		System.out.println("Antall filmer i sjanger history " + filma.antall(Sjanger.HISTORY));
 		System.out.println("Antall filmer i sjanger scifi " + filma.antall(Sjanger.SCIFI));
 	}
+	
+	public void tom () {
+		showMessageDialog(null,"Arkivet har ingen filmer");
+	}
 	// ... Ev. andre metoder}//class
 
 }
