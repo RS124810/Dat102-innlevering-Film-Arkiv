@@ -81,7 +81,7 @@ public class Fil {
 		BufferedReader innfil = null;
 
 		try {
-			// 1 - FileReader
+			// 1 - Leser fil navn og sjekker om filen eksisterer
 			arkivFil = new FileReader(FIL);
 		} catch (FileNotFoundException unntak) {
 			System.out.println("Finner ikke filen " + FIL);
@@ -91,7 +91,7 @@ public class Fil {
 		}
 
 		try {
-			// 2 - BufferedReader
+			// 2 - BufferedReader (leser inn maten i filen)
 			innfil = new BufferedReader(arkivFil);
 
 			// 3 - Leser den første posten som er antall info-poster

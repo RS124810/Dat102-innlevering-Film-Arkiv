@@ -137,8 +137,8 @@ public class Meny {
 							boolean s = false;
 							int filmnr = Integer.parseInt(showInputDialog(null,
 									"Skriv inn film nummeret til filmen som skal slettes fra arkivet"));
-							s = arkivEdit.slettFilm(filmnr);
-							if (s == true) {
+							//s = arkivEdit.slettFilm(filmnr);
+							if (arkivEdit.slettFilm(filmnr)) {
 								// lagrer arkivet til fil "filnavn"
 								showMessageDialog(null, "Film nr: " + filmnr + " ble slettet, oppdaterer filen");
 								Fil.skrivTilFil(arkivEdit, filnavn);
