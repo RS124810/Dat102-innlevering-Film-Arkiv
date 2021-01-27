@@ -9,10 +9,16 @@ public class Filmarkiv implements FilmarkivADT {
 
 	private void utvidKapasitet() {
 		Film[] hjelpetabell = new Film[(int) Math.ceil(1.1 * filmTabell.length)];
+
 		for (int i = 0; i < filmTabell.length; i++) {
 			hjelpetabell[i] = filmTabell[i];
 		}
+		// bugfix, dersom men prøver å legge til en film i et tomt arkiv [(Math.ceil(1.1 * 0) = 0]
+		if (filmTabell.length == 0) {
+			hjelpetabell = new Film[1];
+		}
 		filmTabell = hjelpetabell;
+
 	}
 
 	private Film[] trimTab(Film[] tab, int n) {
@@ -41,7 +47,7 @@ public class Filmarkiv implements FilmarkivADT {
 		if (antall == filmTabell.length) {
 			utvidKapasitet();
 		}
-		filmTabell[antall]= nyFilm;
+		filmTabell[antall] = nyFilm;
 		antall++;
 	}
 
@@ -70,7 +76,7 @@ public class Filmarkiv implements FilmarkivADT {
 	public int getAntall() {
 		return antall;
 	}
-		
+
 	public void setAntall(int antall) {
 		this.antall = antall;
 	}
@@ -105,7 +111,7 @@ public class Filmarkiv implements FilmarkivADT {
 	@Override
 	public int antall(Sjanger sjanger) {
 		int antallSjanger = 0;
-		
+
 		for (int i = 0; i < filmTabell.length; i++) {
 			if (filmTabell[i].getSjanger().equals(sjanger)) {
 				antallSjanger++;
