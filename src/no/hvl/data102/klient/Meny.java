@@ -40,8 +40,8 @@ public class Meny {
 			if (svar == 0) {
 				String Arkivnavn = showInputDialog("Skriv inn navn til det nye arkivet"); // Filnavn
 				int antall = Integer.parseInt(showInputDialog("Hvor mange filmer skal du legge til i arkivet?"));
-				
-				FilmarkivADT arkiv = new Filmarkiv (antall);
+
+				FilmarkivADT arkiv = new Filmarkiv(antall);
 				Tekstgrensesnitt film = new Tekstgrensesnitt();
 
 				for (int i = 0; i < antall; i++) {
@@ -84,15 +84,15 @@ public class Meny {
 							JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, ikon, valg1, 0);
 
 					if (svar1 == 0) { // viser filmer i arkivet på skjerm
-						
-						//arkivet er tomt
-						if (Fil.antall(filnavn)==0) {
+
+						// arkivet er tomt
+						if (Fil.antall(filnavn) == 0) {
 							lestinn.tom();
-						}else {
-						for (int i = 0; i < arkivE.length; i++) {
-							ARKIVEDIT = arkivE[i];
-							lestinn.visFilm(ARKIVEDIT);
-						}
+						} else {
+							for (int i = 0; i < arkivE.length; i++) {
+								ARKIVEDIT = arkivE[i];
+								lestinn.visFilm(ARKIVEDIT);
+							}
 						}
 
 					} else if (svar1 == 1) {
@@ -134,16 +134,16 @@ public class Meny {
 							// todo
 						} else if (svar2 == 2) {
 							// valg: slette film i eksisterende arkiv
-							
+
 							int filmnr = Integer.parseInt(showInputDialog(null,
 									"Skriv inn film nummeret til filmen som skal slettes fra arkivet"));
-							
+
 							// kontroll ble film ble slettet?
 							if (arkivEdit.slettFilm(filmnr)) {
 								// lagrer arkivet til fil "filnavn"
 								showMessageDialog(null, "Film nr: " + filmnr + " ble slettet, oppdaterer filen");
 								Fil.skrivTilFil(arkivEdit, filnavn);
-								//meny2 = 1;
+								// meny2 = 1;
 							} else {
 								showMessageDialog(null, "Ingen film ble slettet");
 							}

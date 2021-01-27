@@ -9,8 +9,9 @@ public class Tekstgrensesnitt {
 	// lese opplysningene om en FILM fra tastatur (mangler metode til å kontrolere
 	// korrekt input fra bruker)<--- lagt til
 	public Film lesFilm() {
-
+		// ok og teller brukes i kontroll
 		boolean ok = false;
+		int teller = 0;
 		int filmnr = 0;
 		String produsent = null;
 		String tittel = null;
@@ -20,32 +21,44 @@ public class Tekstgrensesnitt {
 
 		while (!ok) {
 			try {
-				filmnr = Integer.parseInt(showInputDialog("Film nr: "));
+				while (teller == 0) {
+					filmnr = Integer.parseInt(showInputDialog("Film nr: "));
+					teller++; //<--- godkjenner innput fra bruker
+				}while (teller==1) {
 				produsent = showInputDialog("Vennligst skriv inn produsent: ");
+				teller ++;
+				}while (teller==2) {
 				tittel = showInputDialog("Angi tittel: ");
+				teller ++;
+				}while (teller==3) {
 				lanseringsår = Integer.parseInt(showInputDialog("Fyll ut lanseringsår: "));
+				teller ++;
+				}while (teller==4) {
 				sjanger = Sjanger
 						.finnSjanger(showInputDialog("Vennligst velg sjanger: \nAction, Drama, History eller Scifi."));
-				//Kontroll er input en gyldig sjanger
+				// Kontroll er input en gyldig sjanger
 				if (!sjanger.toString().toUpperCase().equals("ACTION")
 						&& !sjanger.toString().toUpperCase().equals("DRAMA")
 						&& !sjanger.toString().toUpperCase().equals("HISTORY")
 						&& !sjanger.toString().toUpperCase().equals("SCIFI")) {
 					throw new Exception("sjang");
-				}
+					}
+				teller++;
+				}while(teller==5){
 				filmselskap = showInputDialog("Angi filmselskap: ");
-				
-				//godkjent input fra bruker
+				teller ++;
+				}
+				// godkjenner all innput fra bruker
 				ok = true;
 
 			} catch (NumberFormatException e) {
-				//fanger feil i input filmnr og lanseringsår
+				// fanger feil i input filmnr og lanseringsår
 				showMessageDialog(null,
-						e +"\n\nFeil i filmnr eller lanseringsår, må skrives med tall\neksempel: 1 eller 1990\n"
+						e + "\n\nUgyldig format, må skrives med tall\neksempel: 1 eller 1990\n"
 								+ "\nPrøv igjen! ");
 			} catch (Exception sjang) {
-				//fanger ugyldig sjanger
-				showMessageDialog(null, sjang+"\nUgjyldig sjanger\n\nGyldig sjangerer er action,drama,history, "
+				// fanger ugyldig sjanger
+				showMessageDialog(null, sjang + "\nUgjyldig sjanger\n\nGyldig sjangerer er action,drama,history, "
 						+ "eller scifi\n\nPrøv igjen!");
 			}
 		}

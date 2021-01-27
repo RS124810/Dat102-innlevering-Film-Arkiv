@@ -87,6 +87,7 @@ public class Fil {
 		} catch (FileNotFoundException unntak) {
 			System.out.print("Finner ikke filen " + FIL);
 			System.exit(1);
+			
 			// Vi kan lage script som kjører programmet fra kommandolinjen
 			// og fanger opp returkoden ved System.exit
 		}
@@ -144,6 +145,7 @@ public class Fil {
 		} catch (FileNotFoundException unntak) {
 			System.out.println("Finner ikke filen " + FIL);
 			System.exit(1);
+			
 		}
 
 		try {
