@@ -6,15 +6,49 @@ import no.hvl.dat102.*;
 
 public class Tekstgrensesnitt {
 
-	// lese opplysningene om en FILM fra tastatur (mangler metode til å kontrolere korrekt input fra bruker)
+	// lese opplysningene om en FILM fra tastatur (mangler metode til å kontrolere
+	// korrekt input fra bruker)<--- lagt til
 	public Film lesFilm() {
-					
-		int filmnr = Integer.parseInt(showInputDialog("Film nr: "));
-		String produsent = showInputDialog("Vennligst skriv inn produsent: ");
-		String tittel = showInputDialog("Angi tittel: ");
-		int lanseringsår = Integer.parseInt(showInputDialog("Fyll ut lanseringsår: "));
-		Sjanger sjanger = Sjanger.finnSjanger(showInputDialog("Vennligst velg sjanger: \nAction, Drama, History eller Scifi."));
-		String filmselskap = showInputDialog("Angi filmselskap: ");
+
+		boolean ok = false;
+		int filmnr = 0;
+		String produsent = null;
+		String tittel = null;
+		int lanseringsår = 0;
+		Sjanger sjanger = null;
+		String filmselskap = null;
+
+		while (!ok) {
+			try {
+				filmnr = Integer.parseInt(showInputDialog("Film nr: "));
+				produsent = showInputDialog("Vennligst skriv inn produsent: ");
+				tittel = showInputDialog("Angi tittel: ");
+				lanseringsår = Integer.parseInt(showInputDialog("Fyll ut lanseringsår: "));
+				sjanger = Sjanger
+						.finnSjanger(showInputDialog("Vennligst velg sjanger: \nAction, Drama, History eller Scifi."));
+				//Kontroll er input en gyldig sjanger
+				if (!sjanger.toString().toUpperCase().equals("ACTION")
+						&& !sjanger.toString().toUpperCase().equals("DRAMA")
+						&& !sjanger.toString().toUpperCase().equals("HISTORY")
+						&& !sjanger.toString().toUpperCase().equals("SCIFI")) {
+					throw new Exception("sjang");
+				}
+				filmselskap = showInputDialog("Angi filmselskap: ");
+				
+				//godkjent input fra bruker
+				ok = true;
+
+			} catch (NumberFormatException e) {
+				//fanger feil i input filmnr og lanseringsår
+				showMessageDialog(null,
+						e +"\n\nFeil i filmnr eller lanseringsår, må skrives med tall\neksempel: 1 eller 1990\n"
+								+ "\nPrøv igjen! ");
+			} catch (Exception sjang) {
+				//fanger ugyldig sjanger
+				showMessageDialog(null, sjang+"\nUgjyldig sjanger\n\nGyldig sjangerer er action,drama,history, "
+						+ "eller scifi\n\nPrøv igjen!");
+			}
+		}
 
 		Film film = new Film(filmnr, produsent, tittel, lanseringsår, sjanger, filmselskap);
 		return film;
@@ -33,30 +67,32 @@ public class Tekstgrensesnitt {
 
 	// Skrive ut alle Filmer med en spesiell delstreng i tittelen
 	public void skrivUtFilmDelstrengITittel(FilmarkivADT filma, String delstreng) {
-		
+
 		Film[] filmer = filma.soekTittel(delstreng);
 		Film film;
-		
+
 		for (int i = 0; i < filmer.length; i++) {
 			film = filmer[i];
-			showMessageDialog(null,"Film nr: " + film.getFilmnr() + ", produsent: " + film.getProdusent() + ", tittel: "
-					+ film.getTittel() + ", lanseringsår: " + film.getLanseringsår() + ", sjanger: "
-					+ film.getSjanger().toString() + ", filmselskap: " + film.getFilmselskap());
+			showMessageDialog(null,
+					"Film nr: " + film.getFilmnr() + ", produsent: " + film.getProdusent() + ", tittel: "
+							+ film.getTittel() + ", lanseringsår: " + film.getLanseringsår() + ", sjanger: "
+							+ film.getSjanger().toString() + ", filmselskap: " + film.getFilmselskap());
 		}
 
 	}
 
 	// Skriver ut alle Filmer av en produsent/ en gruppe
 	public void skrivUtFilmProdusent(FilmarkivADT filma, String delstreng) {
-		
+
 		Film[] filmer = filma.soekProdusent(delstreng);
 		Film film;
-		
+
 		for (int i = 0; i < filmer.length; i++) {
 			film = filmer[i];
-			showMessageDialog(null,"Film nr: " + film.getFilmnr() + ", produsent: " + film.getProdusent() + ", tittel: "
-					+ film.getTittel() + ", lanseringsår: " + film.getLanseringsår() + ", sjanger: "
-					+ film.getSjanger().toString() + ", filmselskap: " + film.getFilmselskap());
+			showMessageDialog(null,
+					"Film nr: " + film.getFilmnr() + ", produsent: " + film.getProdusent() + ", tittel: "
+							+ film.getTittel() + ", lanseringsår: " + film.getLanseringsår() + ", sjanger: "
+							+ film.getSjanger().toString() + ", filmselskap: " + film.getFilmselskap());
 		}
 
 	}
@@ -71,9 +107,9 @@ public class Tekstgrensesnitt {
 		System.out.println("Antall filmer i sjanger history " + filma.antall(Sjanger.HISTORY));
 		System.out.println("Antall filmer i sjanger scifi " + filma.antall(Sjanger.SCIFI));
 	}
-	
-	public void tom () {
-		showMessageDialog(null,"Arkivet har ingen filmer");
+
+	public void tom() {
+		showMessageDialog(null, "Arkivet har ingen filmer");
 	}
 	// ... Ev. andre metoder}//class
 

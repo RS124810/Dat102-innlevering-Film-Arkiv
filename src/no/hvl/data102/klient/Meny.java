@@ -20,9 +20,9 @@ public class Meny {
 		while (meny1 == 0) {
 			int svar = JOptionPane.showOptionDialog(null,
 					// tekst
-					"               Velkommen til Film Arkiv v1.0\n\n               Hva ønsker du å jobbe med?\n\n",
+					"               Velkommen til Film Arkiv v1.1.2\n\n               Hva ønsker du å jobbe med?\n\n",
 					// tittel
-					"Film Arkiv v1",
+					"Film Arkiv v1.1.2",
 					// knapper
 					JOptionPane.YES_NO_CANCEL_OPTION,
 					// message Type

@@ -14,7 +14,7 @@ public class Fil {
 
 	// Skriver et Filmarkiv til tekstfil
 	// Tekstfilen blir lagret i C:\Users\runar\eclipse-workspace\DAT102\Oving 2
-	
+
 	public static void skrivTilFil(FilmarkivADT filmarkiv, String filnavn) {
 
 		final String FIL = filnavn;
@@ -31,7 +31,7 @@ public class Fil {
 			// vi for hver film henter ut feltvariable og skriver de ut på samme linje
 			Film[] arkiv = filmarkiv.hentFilmTabell();
 			Film ARKIV;
-			
+
 			// skriver først antall filmer i arivet
 			utfil.println(filmarkiv.antall());
 			// 3 - Skriv postene, felt for felt
@@ -83,8 +83,9 @@ public class Fil {
 		try {
 			// 1 - Leser fil navn og sjekker om filen eksisterer
 			arkivFil = new FileReader(FIL);
+
 		} catch (FileNotFoundException unntak) {
-			System.out.println("Finner ikke filen " + FIL);
+			System.out.print("Finner ikke filen " + FIL);
 			System.exit(1);
 			// Vi kan lage script som kjører programmet fra kommandolinjen
 			// og fanger opp returkoden ved System.exit
@@ -139,10 +140,12 @@ public class Fil {
 		try {
 			// 1 - FileReader
 			arkivFil = new FileReader(FIL);
+
 		} catch (FileNotFoundException unntak) {
 			System.out.println("Finner ikke filen " + FIL);
 			System.exit(1);
 		}
+
 		try {
 			// 2 - BufferedReader
 			innfil = new BufferedReader(arkivFil);
