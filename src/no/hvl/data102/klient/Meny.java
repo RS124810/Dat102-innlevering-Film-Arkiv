@@ -11,13 +11,13 @@ public class Meny {
 
 	public void Start() {
 
-		int meny1 = 0;
+		boolean meny1 = true;
 		String[] valg = { "Lage et nytt arkiv?", "Eksisterende arkiv", "Avslutt" };
 		// bildefil til menyen
 		ImageIcon ikon = new ImageIcon(
 				"C:\\Users\\runar\\eclipse-workspace\\DAT102\\Oving 2\\src\\no\\hvl\\dat102\\arkivbilde.png");
 
-		while (meny1 == 0) {
+		while (meny1) {
 			int svar = JOptionPane.showOptionDialog(null,
 					// tekst
 					"               Velkommen til Film Arkiv v1.1.2\n\n               Hva ønsker du å jobbe med?\n\n",
@@ -65,11 +65,12 @@ public class Meny {
 				String filnavn = Arkivnavn + ".txt";
 				String[] valg1 = { "Vis filmer i arkivet", "Søk, slette eller legg til filmer",
 						"Tilbake til hovedmeny" };
-				String[] valg2 = { "Søk", "Legg til en film", "Slett en film" };
+				String[] valg2 = { "Søk", "Legg til en film", "Slett en film","Tilbake" };
 				String[] søkvalg = { "Søk etter filmer av produsent", "Søk etter filmer med tittel", "Tilbake" };
-				int meny2 = 0;
+				boolean meny2 = true;
 				
-				while (meny2 == 0) {
+				
+				while (meny2) {
 
 					// laster inn arkiv som skal jobbes med fra fil gitt ved parameteren filnavn,
 					// oppretter tekstgrensesnitt og tabell av film objekt
@@ -79,11 +80,12 @@ public class Meny {
 					Tekstgrensesnitt lestinn = new Tekstgrensesnitt();
 					Film[] arkivE = arkivEdit.hentFilmTabell();
 					Film ARKIVEDIT;
-
+					boolean meny3 = true;
+					//meny2
 					int svar1 = JOptionPane.showOptionDialog(null, "Hva vil du gjøre?\n", "Eksisterende arkiv",
 							JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, ikon, valg1, 0);
 
-					if (svar1 == 0) { // viser filmer i arkivet på skjerm
+					if (svar1 == 0) { // valg, viser filmer i arkivet på skjerm
 
 						// arkivet er tomt
 						if (Fil.antall(filnavn) == 0) {
@@ -96,26 +98,32 @@ public class Meny {
 						}
 
 					} else if (svar1 == 1) {
-
+						//meny3
+						while (meny3) {	
+						
 						int svar2 = JOptionPane.showOptionDialog(null, "Hva ønsker du å gjøre?",
 								"Søk, slette eller legg til filmer", JOptionPane.YES_NO_CANCEL_OPTION,
 								JOptionPane.INFORMATION_MESSAGE, ikon, valg2, 0);
 						if (svar2 == 0) {
-							// valg: søk i arkiv
+							//valg: søk i arkiv
+							boolean meny4 = true;
+							while (meny4) {
 							int svar3 = JOptionPane.showOptionDialog(null, "Hva ønsker du å gjøre?",
-									"Søk, slette eller legg til filmer", JOptionPane.YES_NO_CANCEL_OPTION,
+									"Søk i arkivet", JOptionPane.YES_NO_CANCEL_OPTION,
 									JOptionPane.INFORMATION_MESSAGE, ikon, søkvalg, 0);
 							if (svar3 == 0) {
-								// søk ved produsent
+							// søk ved produsent
 								String produsentsok = showInputDialog("Skriv inn søkeord for produsent");
 								lestinn.skrivUtFilmProdusent(arkivEdit, produsentsok);
 
 							} else if (svar3 == 1) {
-								// søk ved tittel
+							// søk ved tittel
 								String tittelsok = showInputDialog("Skriv inn søkeord for tittel");
 								lestinn.skrivUtFilmDelstrengITittel(arkivEdit, tittelsok);
 							} else {
-								// om ingen valg matcher returnerer til hovedmeny ved å trykke "X (lukke)"
+								// returnerer til meny3
+								meny4 = false;
+								}
 							}
 
 						} else if (svar2 == 1) {
@@ -149,21 +157,24 @@ public class Meny {
 							}
 							// todo
 						} else {
-							// om ingen valg matcher returnerer til meny2 ved å trykke "X (lukke)"
+							//  returnerer til meny2 
+							meny3 = false;
 						}
-
+					}	
 					} else {
 						// returnere til hovedmenyen"
-						meny2 = 1;
+						meny2 = false;
 					}
 				}
 			} else {
 				// avslutter programmet
 
-				meny1 = 1;
+				meny1 = false;
 
 				// todo
 				// lagre arkivet?
+				
+				// Skulle laget menyen objekt orientert da denne koden er vanskelig å orientere seg i.
 			}
 		}
 	}

@@ -37,10 +37,7 @@ public class Tekstgrensesnitt {
 				sjanger = Sjanger
 						.finnSjanger(showInputDialog("Vennligst velg sjanger: \nAction, Drama, History eller Scifi."));
 				// Kontroll er input en gyldig sjanger
-				if (!sjanger.toString().toUpperCase().equals("ACTION")
-						&& !sjanger.toString().toUpperCase().equals("DRAMA")
-						&& !sjanger.toString().toUpperCase().equals("HISTORY")
-						&& !sjanger.toString().toUpperCase().equals("SCIFI")) {
+				if (sjangkontroll (sjanger)) {
 					throw new Exception("sjang");
 					}
 				teller++;
@@ -48,7 +45,7 @@ public class Tekstgrensesnitt {
 				filmselskap = showInputDialog("Angi filmselskap: ");
 				teller ++;
 				}
-				// godkjenner all innput fra bruker
+				// godkjenner innput fra bruker
 				ok = true;
 
 			} catch (NumberFormatException e) {
@@ -87,9 +84,9 @@ public class Tekstgrensesnitt {
 		for (int i = 0; i < filmer.length; i++) {
 			film = filmer[i];
 			showMessageDialog(null,
-					"Film nr: " + film.getFilmnr() + ", produsent: " + film.getProdusent() + ", tittel: "
-							+ film.getTittel() + ", lanseringsår: " + film.getLanseringsår() + ", sjanger: "
-							+ film.getSjanger().toString() + ", filmselskap: " + film.getFilmselskap());
+					"Film nr: " + film.getFilmnr() + "\nProdusent: " + film.getProdusent() + "\nTittel: "
+							+ film.getTittel() + "\nLanseringsår: " + film.getLanseringsår() + "\nSjanger: "
+							+ film.getSjanger().toString() + "\nFilmselskap: " + film.getFilmselskap());
 		}
 
 	}
@@ -103,9 +100,9 @@ public class Tekstgrensesnitt {
 		for (int i = 0; i < filmer.length; i++) {
 			film = filmer[i];
 			showMessageDialog(null,
-					"Film nr: " + film.getFilmnr() + ", produsent: " + film.getProdusent() + ", tittel: "
-							+ film.getTittel() + ", lanseringsår: " + film.getLanseringsår() + ", sjanger: "
-							+ film.getSjanger().toString() + ", filmselskap: " + film.getFilmselskap());
+					"Film nr: " + film.getFilmnr() + "\nProdusent: " + film.getProdusent() + "\nTittel: "
+							+ film.getTittel() + "\nLanseringsår: " + film.getLanseringsår() + "\nSjanger: "
+							+ film.getSjanger().toString() + "\nFilmselskap: " + film.getFilmselskap());
 		}
 
 	}
@@ -123,6 +120,15 @@ public class Tekstgrensesnitt {
 
 	public void tom() {
 		showMessageDialog(null, "Arkivet har ingen filmer");
+	}
+	public boolean sjangkontroll (Sjanger sjanger) {
+		if (!sjanger.toString().toUpperCase().equals("ACTION")
+				&& !sjanger.toString().toUpperCase().equals("DRAMA")
+				&& !sjanger.toString().toUpperCase().equals("HISTORY")
+				&& !sjanger.toString().toUpperCase().equals("SCIFI")) {
+			return true;
+		}
+		return false;
 	}
 	// ... Ev. andre metoder}//class
 
