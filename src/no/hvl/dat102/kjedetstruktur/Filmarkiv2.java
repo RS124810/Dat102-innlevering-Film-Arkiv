@@ -1,3 +1,10 @@
+//Oppgave gruppe 12  
+
+//Nilssen Sondre Tryti
+//Ryland Sindre
+//Shanmugarajah Sanjith
+//Straume Runar
+
 package no.hvl.dat102.kjedetstruktur;
 
 import no.hvl.dat102.Film;

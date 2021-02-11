@@ -1,3 +1,10 @@
+//Oppgave gruppe 12  
+
+//Nilssen Sondre Tryti
+//Ryland Sindre
+//Shanmugarajah Sanjith
+//Straume Runar
+
 package no.hvl.dat102;
 
 import no.hvl.data102.adt.FilmarkivADT;
