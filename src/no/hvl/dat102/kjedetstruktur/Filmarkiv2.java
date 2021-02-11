@@ -60,8 +60,8 @@ public class Filmarkiv2 implements FilmarkivADT {
 			return true;
 		}
 		// teller gjennom nodene og setter temp til noden med objektet som inneholder
-		// film nr som
-		// matcher parameter filmnr
+		// film nr som matcher parameter filmnr
+
 		LinearNode<Film> temp = new LinearNode<>();
 		int teller = 1;
 		// søker igjennom nodene etter treff på filmnr eller til de ikke er flere noder
@@ -90,7 +90,7 @@ public class Filmarkiv2 implements FilmarkivADT {
 
 	@Override
 	// søk i nodene med en delstreng mot titteler
-	
+
 	public Film[] soekTittel(String delstreng) {
 
 		Filmarkiv2 tittler = new Filmarkiv2();
@@ -98,11 +98,11 @@ public class Filmarkiv2 implements FilmarkivADT {
 		temp = start;
 
 		for (int i = 0; i < antall; i++) {
-			//legger til treff på søket mot produsent
+			// legger til treff på søket mot produsent
 			if (temp.getElement().getTittel().contains(delstreng)) {
 				tittler.leggTilFilm(temp.getElement());
 			}
-			//henter neste node vis den eksisterer
+			// henter neste node vis den eksisterer
 			if (temp.getNeste() != null) {
 				temp = temp.getNeste();
 			}
@@ -110,55 +110,54 @@ public class Filmarkiv2 implements FilmarkivADT {
 		return tittler.hentFilmTabell();
 	}
 
-
 	@Override
 	// søk i nodene med en delstreng mot produsent
-	
+
 	public Film[] soekProdusent(String delstreng) {
-		
+
 		Filmarkiv2 produsent = new Filmarkiv2();
 		LinearNode<Film> temp = new LinearNode<>();
 		temp = start;
 
 		for (int i = 0; i < antall; i++) {
-			//legger til treff på søket mot produsent
+			// legger til treff på søket mot produsent
 			if (temp.getElement().getTittel().contains(delstreng)) {
 				produsent.leggTilFilm(temp.getElement());
 			}
-			//henter neste node vis den eksisterer
+			// henter neste node vis den eksisterer
 			if (temp.getNeste() != null) {
 				temp = temp.getNeste();
 			}
 		}
 		return produsent.hentFilmTabell();
 	}
-	
+
 	@Override
 	// søk i nodene etter antall i en sjanger
-	
+
 	public int antall(Sjanger sjanger) {
-		
+
 		int antallSjanger = 0;
-		LinearNode<Film>temp=new LinearNode<>();
-		temp=start;
-		
-		for(int i = 0; i <antall; i++) {
-			//legger til treff på søket mot sjanger
+		LinearNode<Film> temp = new LinearNode<>();
+		temp = start;
+
+		for (int i = 0; i < antall; i++) {
+			// legger til treff på søket mot sjanger
 			if (temp.getElement().getSjanger().equals(sjanger)) {
 				antallSjanger++;
 			}
-			//henter neste node vis den eksisterer
+			// henter neste node vis den eksisterer
 			if (temp.getNeste() != null) {
 				temp = temp.getNeste();
 			}
 		}
-		
+
 		return antallSjanger;
 	}
 
 	@Override
 	public int antall() {
-		
+
 		return antall;
 	}
 
