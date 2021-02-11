@@ -6,21 +6,25 @@ public class Filmarkiv implements FilmarkivADT {
 
 	private Film[] filmTabell;
 	private int antall = 0;
-
+	
+	// øker tabell str.
+	
 	private void utvidKapasitet() {
 		Film[] hjelpetabell = new Film[(int) Math.ceil(1.1 * filmTabell.length)];
 
 		for (int i = 0; i < filmTabell.length; i++) {
 			hjelpetabell[i] = filmTabell[i];
 		}
-		// bugfix, dersom men prøver å legge til en film i et tomt arkiv [(Math.ceil(1.1 * 0) = 0]
+		// bugfix, dersom en sletter alle filmer i arkivet og så prøver å legge til i et tomt arkiv Film[(Math.ceil(1.1 * 0) = 0]
 		if (filmTabell.length == 0) {
 			hjelpetabell = new Film[1];
 		}
 		filmTabell = hjelpetabell;
 
 	}
-
+	
+	// fjerner tomme plasser i tabellen
+	
 	private Film[] trimTab(Film[] tab, int n) {
 		// n er antall elementer
 		Film[] filmtab2 = new Film[n];
@@ -43,6 +47,8 @@ public class Filmarkiv implements FilmarkivADT {
 	}
 
 	@Override
+	// legger til en ny film i tabellen
+	
 	public void leggTilFilm(Film nyFilm) {
 		if (antall == filmTabell.length) {
 			utvidKapasitet();
@@ -52,6 +58,8 @@ public class Filmarkiv implements FilmarkivADT {
 	}
 
 	@Override
+	// sletter en film fra tabellen
+	
 	public boolean slettFilm(int filmnr) {
 		for (int i = 0; i < filmTabell.length; i++) {
 			if (filmnr == filmTabell[i].getFilmnr()) {
@@ -82,6 +90,8 @@ public class Filmarkiv implements FilmarkivADT {
 	}
 
 	@Override
+	// søk i tabellen med delstreng mot tittel
+	
 	public Film[] soekTittel(String delstreng) {
 		int antallTittler = 0;
 		Film[] filmTittel = new Film[antall];
@@ -96,6 +106,8 @@ public class Filmarkiv implements FilmarkivADT {
 	}
 
 	@Override
+	// søk i tabellen med delstreng mot produsent
+	
 	public Film[] soekProdusent(String delstreng) {
 		int antallProd = 0;
 		Film[] filmProd = new Film[antall];
@@ -109,6 +121,8 @@ public class Filmarkiv implements FilmarkivADT {
 	}
 
 	@Override
+	//finner antall av filmer i en sjanger
+	
 	public int antall(Sjanger sjanger) {
 		int antallSjanger = 0;
 
@@ -121,6 +135,8 @@ public class Filmarkiv implements FilmarkivADT {
 	}
 
 	@Override
+	// antall filmer i arkivet
+	
 	public int antall() {
 
 		return antall;

@@ -121,7 +121,8 @@ public class Tekstgrensesnitt {
 	public void tom() {
 		showMessageDialog(null, "Arkivet har ingen filmer");
 	}
-	public boolean sjangkontroll (Sjanger sjanger) {
+	// hjelpemetode sjanger kontroll
+	private boolean sjangkontroll (Sjanger sjanger) {
 		if (!sjanger.toString().toUpperCase().equals("ACTION")
 				&& !sjanger.toString().toUpperCase().equals("DRAMA")
 				&& !sjanger.toString().toUpperCase().equals("HISTORY")

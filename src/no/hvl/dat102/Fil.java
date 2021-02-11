@@ -13,7 +13,7 @@ import java.io.FileNotFoundException;
 public class Fil {
 
 	// Skriver et Filmarkiv til tekstfil
-	// Tekstfilen blir lagret i C:\Users\runar\eclipse-workspace\DAT102\Oving 2
+	// Tekstfilen blir lagret hos meg i C:\Users\runar\eclipse-workspace\DAT102\Oving 2
 
 	public static void skrivTilFil(FilmarkivADT filmarkiv, String filnavn) {
 

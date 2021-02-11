@@ -174,7 +174,7 @@ public class Meny {
 				// todo
 				// lagre arkivet?
 				
-				// Skulle laget menyen objekt orientert da denne koden er vanskelig å orientere seg i.
+				// Skulle laget menyen objekt orientert, eller valgene som private meny metoder, da denne koden er vanskelig å orientere seg i.
 			}
 		}
 	}
