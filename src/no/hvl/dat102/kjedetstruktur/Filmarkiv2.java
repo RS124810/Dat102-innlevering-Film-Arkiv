@@ -132,7 +132,10 @@ public class Filmarkiv2 implements FilmarkivADT {
 		}
 		return produsent.hentFilmTabell();
 	}
+	
 	@Override
+	// søk i nodene etter antall i en sjanger
+	
 	public int antall(Sjanger sjanger) {
 		
 		int antallSjanger = 0;
