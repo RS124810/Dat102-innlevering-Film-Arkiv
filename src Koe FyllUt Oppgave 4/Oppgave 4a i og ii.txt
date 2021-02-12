@@ -1,0 +1,36 @@
+Oppgave4 
+
+i)
+@Test
+	public void pushPopErTom() {
+		try {
+//stabler på elementet e0
+			stabel.push(e0);
+			
+//fjerner elementet på toppen
+			stabel.pop();
+			
+//tester om stabel er tom, dersom retur er true fra erTom() som metoden gjør om stabelen er tom.
+			assertTrue(stabel.erTom());
+
+		} catch (EmptyCollectionException e) {
+			fail("push eller pop feilet uventet " + e.getMessage());
+		}
+	}
+
+ii)
+@Test
+	public void popFromEmptyIsUnderflowed() {
+		/*
+		 * Assertions.assertThrows(EmptyCollectionException.class, new Executable() {
+		 * 
+		 * @Override public void execute() throws Throwable { stabel.pop(); } });
+		 */
+
+		Assertions.assertThrows(EmptyCollectionException.class, () -> {
+			
+			stabel.pop();
+			
+//test som sjekker om pop på en tom stabel kaster untakket "EmptyCollectionException"
+		});
+	}
